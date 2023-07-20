@@ -1,0 +1,2 @@
+importFrom("Rmpfr", "Const", "dnorm", "getPrec", "mpfr", "mpfrArray", "pmax", "pmin", "pnorm")
+export("OwenT", "Phi2xy")
