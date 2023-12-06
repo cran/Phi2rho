@@ -29,11 +29,11 @@ If \code{fun = "tOwenT"} or \code{fun = "vOwenT"}, and \code{opt = TRUE}, then t
 }
 \value{The value of computed function is returned, scalar or vector.  The attribute \sQuote{nIter} of returned value means the number of iterations.}
 \references{
-Komelj J.: The bivariate normal integral via Owen's T function as a modified Euler's arctangent series, submitted to ....
+Komelj, J. (2023): The Bivariate Normal Integral via Owen's T Function as a Modified Euler's Arctangent Series, \emph{American Journal of Computational Mathematics}, \bold{13}, 4, 476--504, \doi{10.4236/ajcm.2023.134026} (or reprint \url{https://arxiv.org/pdf/2312.00011.pdf} with better typography).
 
 Owen, D. B. (1956): Tables for Computing Bivariate Normal Probabilities, \emph{The Annals of Mathematical Statistics}, \bold{27}, 4, 1075--1090, \doi{10.1214/aoms/1177728074}.
 
-Owen, D. B. (1980): A table of normal integrals, \emph{Communications in Statistics - Simulation and Computation}, \bold{9}, 4, 389--419, \doi{10.1080/03610918008812164}.
+Owen, D. B. (1980): A table of normal integrals, \emph{Communications in Statistics -- Simulation and Computation}, \bold{9}, 4, 389--419, \doi{10.1080/03610918008812164}.
 }
 
 \author{Janez Komelj}

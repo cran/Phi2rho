@@ -10,8 +10,8 @@ The DESCRIPTION file:
 Package: Phi2rho\cr
 Type: Package\cr
 Title: Owen's T Function and Bivariate Normal Integral\cr
-Version: 1.0\cr
-Date: 2023-07-19\cr
+Version: 1.0.1\cr
+Date: 2023-12-06\cr
 Authors@R: person("Janez","Komelj", role = c("aut","cre"),\cr
                   email = "jkomelj@siol.net")\cr
 Depends: R (>= 3.5.0), stats\cr
@@ -19,18 +19,21 @@ Imports: Rmpfr\cr
 Description: Computes the Owen's T function or the bivariate\cr
              normal integral using one of the following:\cr
              modified Euler's arctangent series, tetrachoric\cr
-             series, or Vasicek's series.\cr
+             series, or Vasicek's series.  For the methods,\cr
+             see Komelj, J. (2023) <doi:10.4236/ajcm.2023.134026>\cr
+             (or reprint <arXiv:2312.00011> with better typography)\cr
+             and Vasicek, O. A. (1998) <doi:10.21314/JCF.1998.015>.\cr
 License: GPL-2 | GPL-3\cr
 }
 \author{Janez Komelj
 
 Maintainer: Janez Komelj <jkomelj@siol.net>}
 \references{
-Komelj J.: The bivariate normal integral via Owen's T function as a modified Euler's arctangent series, submitted to ...
+Komelj, J. (2023): The Bivariate Normal Integral via Owen's T Function as a Modified Euler's Arctangent Series, \emph{American Journal of Computational Mathematics}, \bold{13}, 4, 476--504, \doi{10.4236/ajcm.2023.134026} (or reprint \url{https://arxiv.org/pdf/2312.00011.pdf} with better typography).
 
 Owen, D. B. (1956): Tables for Computing Bivariate Normal Probabilities, \emph{The Annals of Mathematical Statistics}, \bold{27}, 4, 1075--1090, \doi{10.1214/aoms/1177728074}.
 
-Owen, D. B. (1980): A table of normal integrals, \emph{Communications in Statistics - Simulation and Computation}, \bold{9}, 4, 389--419, \doi{10.1080/03610918008812164}.
+Owen, D. B. (1980): A table of normal integrals, \emph{Communications in Statistics -- Simulation and Computation}, \bold{9}, 4, 389--419, \doi{10.1080/03610918008812164}.
 
 Vasicek, O. A. (1998): A series expansion for the bivariate normal integral, \emph{The Journal of Computational Finance}, \bold{1}, 4, 5--10, \doi{10.21314/JCF.1998.015}.
 }

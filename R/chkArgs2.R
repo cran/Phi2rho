@@ -1,5 +1,4 @@
-chkArgs2 <-
-function( x, y, rho, opt ) {
+chkArgs2 <- function( x, y, rho, opt ) {
   stopifnot( length( x ) >= 1 && length( y ) >= 1 && length( rho ) >= 1 )
   stopifnot( length( abs( rho ) <= 1 ) >= 1 )
   stopifnot( ( isa( x, "numeric" ) || isa( x, "mpfr" ) ) &&

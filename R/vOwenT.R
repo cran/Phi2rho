@@ -1,15 +1,13 @@
-vOwenT <-
-function( h, r, ph, prh, transf = TRUE, xy = FALSE ) {
+vOwenT <- function( h, r, ph, prh, transf = TRUE, xy = FALSE ) {
   # The function calculates the Owen''s function T( h, r ). It can handle the
   # special cases r = Inf and r = -Inf, and also r = 0 if transf = TRUE. In
   # such cases, indefinite expressions occur but are caught and modified so
-  # that the loop stops after the first iteration with Q = 0, and then the
-  # final result is formed. The calling function ensures that h and r are of
-  # the same length and provides pnorm( h ) in ph parameter and pnorm( r * h )
-  # in prh, where prh must be set to 0 if r is infinite and h is zero. If
-  # xy = TRUE, the two calculations needed to calculate Phi2xy( x, y ) are
-  # combined into one, since the calling function ensures that h = c( x, y ),
-  # r = c( rx, ry ) etc.
+  # that the loop stops with Q = 0, and then the final result is formed. The
+  # calling function ensures that h and r are of the same length and provides
+  # pnorm( h ) and pnorm( r * h ) in ph and prh parameters respectively, where
+  # prh must be set to 0 if h is zero and r is infinite. If xy = TRUE, the two
+  # calculations needed to calculate Phi2xy( x, y ) are combined into one,
+  # since the calling function ensures that h = c( x, y ), r = c( rx, ry ) etc.
   if ( !transf ) stopifnot( all( r != 0 ) )
   if ( xy ) {
     kx <- 1 : ( length( h ) / 2 )

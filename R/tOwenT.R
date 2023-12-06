@@ -1,21 +1,24 @@
-tOwenT <-
-function( h, r, ph, prh, transf = TRUE, xy = FALSE ) {
-  # The function calculates the Owen''s function T( h, r ). If transf = TRUE, it
-  # can handle the special cases r = Inf and r = -Inf. In such cases, indefinite
-  # expressions occur but are caught and modified so that the loop stops after
-  # the first iteration with s = 0, and then the final result is formed. The
-  # calling function ensures that h and r are of the same length and provides
-  # pnorm( h ) in ph parameter and pnorm( r * h ) in prh, where prh must be set
-  # to 0 if r is infinite and h is zero. If xy = TRUE, the two calculations
-  # needed to calculate Phi2xy( x, y ) are combined into one, since the calling
-  # function ensures that h = c( x, y ), r = c( rx, ry ) etc.
-  if ( !transf ) stopifnot( all( is.finite( r ) ) )
+tOwenT <- function( h, r, ph, prh, transf = TRUE, xy = FALSE ) {
+  # The function calculates the Owen''s function T( h, r ). It can handle the
+  # special cases r = Inf and r = -Inf. In such cases, indefinite expressions
+  # occur but are caught and modified so that the loop stops with s = 0, and
+  # then the final result is formed. The calling function ensures that h and
+  # r are of the same length and provides pnorm( h ) and pnorm( r * h ) in ph
+  # and prh parameters respectively, where prh must be set to 0 if h is zero
+  # and r is infinite. If xy = TRUE, the two calculations needed to calculate
+  # Phi2xy( x, y ) are combined into one, since the calling function ensures
+  # that h = c( x, y ), r = c( rx, ry ) etc. In the first published version on
+  # CRAN, the calculation for transf = FALSE and infinite r was not possible.
+  # For such cases, exceptionally, we calculate as if transf = TRUE, which is
+  # also taken into account by the calling functions when preparing the ph and
+  # prh parameters.
   if ( xy ) {
     kx <- 1 : ( length( h ) / 2 )
     ky <- ( length( h ) / 2 + 1 ) : length( h )
   }
-  u <- ph
-  i <- transf & abs( r ) > 1 # indicates where the transformations must be done
+  u <- ph 
+  # i indicates where the transformations must be done
+  i <- ( transf & abs( r ) > 1 ) | is.infinite( r )
   # attention: the transformation of u must be before the transformation of r,
   # because otherwise for r = Inf and r = -Inf we get the sign 0 instead of 1
   # and -1 repectively, because sign( 0 ) = 0 in R

@@ -1,5 +1,4 @@
-chkArgs1 <-
-function( h, a, opt ) {
+chkArgs1 <- function( h, a, opt ) {
   stopifnot( length( h ) >= 1 && length( a ) >= 1 )
   if ( length( h ) > 1 && length( a ) > 1 ) stopifnot( length( h ) == length( a ) )
   # When plotting a curve with rho on the x-axis, xlim = c( -1.1, 1.1 ), and

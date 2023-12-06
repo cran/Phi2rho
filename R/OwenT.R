@@ -1,5 +1,4 @@
-OwenT <-
-function( h, a, opt = TRUE, fun = c( "mOwenT", "tOwenT", "vOwenT" ) ) {
+OwenT <- function( h, a, opt = TRUE, fun = c( "mOwenT", "tOwenT", "vOwenT" ) ) {
   # The OwenT function is a wrapper for the mOwenT, tOwenT and vOwenT functions,
   # which compute the Owen's function T( h, a ), but use r instead of the original
   # Owen's parameter a, which is preserved here.
@@ -14,15 +13,15 @@ function( h, a, opt = TRUE, fun = c( "mOwenT", "tOwenT", "vOwenT" ) ) {
   if ( any( i ) ) {
     h   <- h[ i ]
     a   <- a[ i ]
-    ph  <- pnorm( h )  
-    fun <- match.arg( fun ) 
-    if ( fun == "mOwenT" ) j <- abs( a ) > 1       # opt means atanExt in mOwenT
-    if ( fun == "tOwenT" ) j <- opt & abs( a ) > 1 # opt means transf in tOwenT
-    if ( fun == "vOwenT" ) j <- opt & abs( a ) < 1 # opt means transf in vOwenT
+    j   <- !is.nan( a * h )
+    fun <- match.arg( fun )   
+    if ( fun == "mOwenT" ) j <- j & abs( a ) > 1
+    if ( fun == "tOwenT" ) j <- j & ( opt & abs( a ) > 1 | is.infinite( a ) )
+    if ( fun == "vOwenT" ) j <- j & opt & abs( a ) < 1
     pah <- h # dummy - forced to have a mpfr class if Rmpfr is used
-    if ( any( j ) ) pah[ j ] <- pnorm( a[ j ] * h[ j ] )
-    pah[ is.nan( pah ) ] <- 0 # ( a == Inf | a == -Inf ) & h == 0
-    w <- eval( call( fun, h, a, ph, pah, opt ) )
+    pah[ j ]  <- pnorm( a[ j ] * h[ j ] )
+    pah[ !j ] <- 0 # h == 0 & ( a == Inf | a == -Inf )
+    w <- eval( call( fun, h, a, pnorm( h ), pah, opt ) )
     z[ i ] <- w
     n[ i ] <- attr( w, "nIter" )
   }

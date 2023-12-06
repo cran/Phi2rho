@@ -31,10 +31,10 @@ Phi2xy <- function( x, y, rho, opt = TRUE,
     u <- r * x # can be Inf * 0 or -Inf * 0
     j <- !is.nan( u )
     if ( fun == "mOwenT" ) j <- j & abs( r ) > 1
-    if ( fun == "tOwenT" ) j <- j & opt & abs( r ) > 1
+    if ( fun == "tOwenT" ) j <- j & ( opt & abs( r ) > 1 | is.infinite( r ) )
     if ( fun == "vOwenT" ) j <- j & opt & abs( r ) < 1
-    u[ j ] <- pnorm( u[ j ] )
-    u[ is.nan( u ) ] <- 0
+    u[ j ]  <- pnorm( u[ j ] )
+    u[ !j ] <- 0  # ( r == Inf | r == -Inf ) & x == 0
     return( u )
   }
   fz <- function( x, y, rho, rx, ry, px, py ) {

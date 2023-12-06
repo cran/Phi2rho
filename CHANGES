@@ -1,0 +1,12 @@
+Changes from Phi2rho 1.0 (20. 7. 2023) to Phi2rho 1.0.1:
+--------------------------------------------------------
+
+1.  In the documentation, the incomplete reference Komelj, J.
+    (2023) is completed.
+
+2.  When calling OwenT( h, ±Inf, FALSE, "tOwenT" ), the
+    parameter control reported an error
+    "Error in tOwenT(...) : all(is.finite(r)) is not TRUE".
+    Consequently, calling Phi2xy( x, 0, rho, FALSE, "tOwenT" ),
+    which implies r = ±Inf, reported the same. This bug has
+    been fixed.
